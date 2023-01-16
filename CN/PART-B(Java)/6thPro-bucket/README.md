@@ -1,3 +1,3 @@
 # Output
 
-<img src="output.png">
+<img src="res/output.png">
