@@ -65,8 +65,8 @@ END {
 }
 Output
 [root@localhost ~]# ns lab3.tcl
-[root@localhost ~]# awk -f lab3.awk file1.tr>tcp1
- [root@localhost ~]# awk -f lab3.awk file2.tr>tcp2 
+[root@localhost ~]# awk -f lab3.awk file1.tr>a1
+ [root@localhost ~]# awk -f lab3.awk file2.tr>a2 
  [root@localhost ~]# xgraph a1 a2
 
  
