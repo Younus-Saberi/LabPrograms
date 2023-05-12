@@ -1,0 +1,124 @@
+Program 6
+a) Write a LEX program to eliminate comment lines in a C program and copy the resulting program into a separate file.
+b) Write the YACC program to recognize valid identifiers, operators, and keywords in the given text (C program) file.
+teps in writing LEX Program:
+1.	Step – Using gedit create a file with extension .l For example: prg1.l
+2.	Step – lex prg1.l
+3.	Step – cc lex.yy.c –ll
+4.	Step – ./a.out
+Steps in writing YACC Program:
+1.	Step: Using gedit editor create a file with extension y. For example: gedit prg1.y
+2.	Step: YACC –d prg1.y
+3.	Step: lex prg1.l
+4.	Step: cc y.tab.c lex.yy.c -ll
+5.	Step: /a.out
+System Software Lab 6a Code [lab6.l]
+
+%{
+#include<stdio.h>
+int sl=0;
+int ml=0;
+%}
+%%
+"/*"[a-zA-Z0-9' '\t\n]+"*/" ml++;
+"//".* sl++;
+%%
+
+main()
+{
+ yyin=fopen("f1.c","r");
+ yyout=fopen("f2.c","w");
+ yylex();
+ fclose(yyin);
+ fclose(yyout);
+ printf("\n Number of single line comments are = %d\n",sl);
+ printf("\nNumber of multiline comments are =%d\n",ml);
+}
+
+f1.c
+#include<stido.h>
+
+int main()
+{
+ // this is a comment
+ printf("hello");
+ /* this is another comment */
+}
+System Software lab 6 – Output
+ 
+System Software Lab6.b Code
+lab6.l
+%{
+#include <stdio.h>
+#include "y.tab.h"
+extern yylval;
+%}
+
+%%
+[ \t];
+[+|-|*|/|=|<|>] {printf("operator is %s\n",yytext);return OP;}
+[0-9]+ {yylval = atoi(yytext); printf("numbers is %d\n",yylval); return DIGIT;}
+int|char|bool|float|void|for|do|while|if|else|return|void {printf("keyword is %s\n",yytext);return KEY;}
+[a-zA-Z0-9]+ {printf("identifier is %s\n",yytext);return ID;}
+. ;
+%%
+lab6.y
+%{
+#include <stdio.h>
+#include <stdlib.h>
+int id=0, dig=0, key=0, op=0;
+%}
+%token DIGIT ID KEY OP
+
+%%
+input:
+DIGIT input { dig++; }
+| ID input { id++; }
+| KEY input { key++; }
+| OP input {op++;}
+| DIGIT { dig++; }
+| ID { id++; }
+| KEY { key++; }
+| OP { op++;}
+;
+%%
+
+#include <stdio.h>
+extern int yylex();
+extern int yyparse();
+extern FILE *yyin;
+main()
+{
+ FILE *myfile = fopen("inputfile.c", "r");
+ if (!myfile)
+ {
+  printf("I can't open inputfile.c!");
+  return -1;
+ }
+ yyin = myfile;
+ do{
+  yyparse();
+ }while (!feof(yyin));
+ printf("numbers = %d\nKeywords = %d\nIdentifiers = %d\noperators = %d\n",dig, key,id, op);
+}
+
+void yyerror()
+{
+ printf("EEK, parse error! Message: ");
+ exit(-1);
+}
+inputfile.txt
+#include<stdio.h>
+
+int main()
+{
+ int a ;
+ int b ;
+ a = 1 ;
+ b = 2 ;
+ a = a+b;
+ return 0 ;
+}
+System Software lab6b – Output
+ 
+
