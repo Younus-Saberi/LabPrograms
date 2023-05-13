@@ -1,17 +1,9 @@
-Program 6
-a) Write a LEX program to eliminate comment lines in a C program and copy the resulting program into a separate file.
-b) Write the YACC program to recognize valid identifiers, operators, and keywords in the given text (C program) file.
-teps in writing LEX Program:
-1.	Step – Using gedit create a file with extension .l For example: prg1.l
-2.	Step – lex prg1.l
-3.	Step – cc lex.yy.c –ll
-4.	Step – ./a.out
-Steps in writing YACC Program:
-1.	Step: Using gedit editor create a file with extension y. For example: gedit prg1.y
-2.	Step: YACC –d prg1.y
-3.	Step: lex prg1.l
-4.	Step: cc y.tab.c lex.yy.c -ll
-5.	Step: /a.out
+Program 6a)
+ gedit prg1.l
+ lex prg1.l
+ cc lex.yy.c –ll
+./a.out
+
 System Software Lab 6a Code [lab6.l]
 
 %{
@@ -44,6 +36,15 @@ int main()
  printf("hello");
  /* this is another comment */
 }
+
+
+6b)
+gedit prg1.y
+yacc –d prg1.y
+lex prg1.l
+cc y.tab.c lex.yy.c -ll
+./a.out
+
 System Software lab 6 – Output
  
 System Software Lab6.b Code
