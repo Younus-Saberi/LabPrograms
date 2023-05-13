@@ -1,3 +1,4 @@
+#include<stdlib.h>
 #include<stdio.h>
 struct proc
 {
@@ -17,7 +18,7 @@ int nextprocess();
 void roundrobin(int, int, int[], int[]);
 void srtf(int);
 
-main()
+int main()
 {
         int n,tq,choice;
         int bt[10],st[10],i,j,k;
@@ -50,6 +51,7 @@ main()
                 case 3: exit(0);
                 }
         }
+   return 0;
 }
 
 void roundrobin(int n,int tq,int st[],int bt[])
