@@ -1,0 +1,77 @@
+#include<stdio.h>
+#include<GL/glut.h>
+GLfloat R;
+GLint ch;
+void draw_triangle()
+{
+glClear(GL_COLOR_BUFFER_BIT);
+glColor3f(0,0,1);
+glBegin(GL_LINE_LOOP);
+glVertex2f(0.1,0.4);
+glVertex2f(0.7,0.4);
+glVertex2f(0.4,0.8);
+glEnd();
+glFlush();
+}
+void rotate_about_origin()
+{
+glLoadIdentity();
+glRotatef(R,0,0,1);
+glColor3f(1,0,1);
+glBegin(GL_LINE_LOOP);
+glVertex2f(0.1,0.4);
+glVertex2f(0.7,0.4);
+glVertex2f(0.4,0.8);
+glEnd();
+glFlush();
+}
+void rotate_about_fixed_point()
+{
+glLoadIdentity();
+glTranslatef(0.1,0.4,0);
+glRotatef(R,0,0,1);
+glTranslatef(-0.1,-0.4,0);
+glColor3f(1,0,1);
+glBegin(GL_LINE_LOOP);
+glVertex2f(0.1,0.4);
+glVertex2f(0.7,0.4);
+glVertex2f(0.4,0.8);
+glEnd();
+glFlush();
+}
+void display()
+{
+if (ch==1)
+{
+draw_triangle();
+rotate_about_origin();
+glFlush();
+}
+if(ch==2)
+{
+draw_triangle();
+rotate_about_fixed_point();
+glFlush();
+}
+}
+int main(int argc, char ** argv)
+{
+printf("***Rotation***\n1.Rotation about origin\n2.Rotation about a fixed point(xr,yr)\n");
+printf("Enter the choice\n");
+scanf("%d", &ch);
+printf("Enter rotation angle\n");
+scanf("%f", &R);
+glutInit(&argc, argv);
+glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+glutInitWindowSize(500, 500);
+glutInitWindowPosition(0, 0);
+glutCreateWindow("Rotate a Triangle");
+glutDisplayFunc(display);
+glutMainLoop();
+return 0;
+}
+
+//Parameters:
+//-lopengl32
+//-lfreeglut
+//-lglu32
