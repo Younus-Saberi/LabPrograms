@@ -1,48 +1,48 @@
-include<stdio. h>
-#include<stdlib. h>
-#include<ctype. h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<ctype.h>
 
-char op[2],argl[5],arg2([5], result[5];
+char op[2],arg1[5],arg2[5], result[5];
 int main()
 {
-FILE *fpl,*fp2;
-fpl=fopen("input.txt”,"r"); I
-fp2=Topen( "output.txt", "w");
+FILE *fp1,*fp2;
+fp1=fopen("input.txt","r"); 
+fp2=fopen("output.txt","w");
 
-while(!feof (fpl))
+while(!feof(fp1))
 {
-fscanf(fpl, "%s%s%s%s", result,argl,op,arg2);
+fscanf(fp1,"%s%s%s%s", result,arg1,op,arg2);
 if(strcmp(op, "+" )==0)
 {
-fprintf(fp2, "\nMOV RO,%s",argl);
+fprintf(fp2, "\nMOV RO,%s",arg1);
 fprintf(fp2, "\nADD RO,%s",arg2);
-fprintf(fp2, "\nMOV %s,R0O", result);
+fprintf(fp2, "\nMOV %s,R0", result);
 }
 
 if(strcmp(op, "-")==0)
 {
-fprintf(fp2, “\nMOV RO,;%s",argl);
+fprintf(fp2, "\nMOV RO,%s",arg1);
 fprintf(fp2, "\nSUB RO,%s",arg2);
-fprintf(fp2, “\nMOV %s,R0O", result);
+fprintf(fp2, "\nMOV %s,R0", result);
 }
 
 if(strcmp(op, "*")==0)
 {
-fprintf(fp2, “\nMOV RO,;%s",argl);
+fprintf(fp2, "\nMOV RO,%s",arg1);
 fprintf(fp2, "\nMUL RO,%s",arg2);
-fprintf(fp2, “\nMOV %s,R0O", result);
+fprintf(fp2, "\nMOV %s,R0", result);
 }
 
 if(strcmp(op, "/")==0)
 {
-fprintf(fp2, “\nMOV RO,;%s",argl);
+fprintf(fp2, "\nMOV RO,%s",arg1);
 fprintf(fp2, "\nDIV RO,%s",arg2);
-fprintf(fp2, “\nMOV %s,R0O", result);
+fprintf(fp2, "\nMOV %s,R0", result);
 }
 if(strcmp(op, "=")==0)
 {
-fprintf(fp2, “\nMOV RO,;%s",argl);
-fprintf(fp2, “\nMOV %s,R0O", result);
+fprintf(fp2, "\nMOV RO,%s",arg1);
+fprintf(fp2, "\nMOV %s,R0", result);
 }
 }
 fclose(fp1);
