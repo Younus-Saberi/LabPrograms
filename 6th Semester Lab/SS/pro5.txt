@@ -1,0 +1,50 @@
+include<stdio. h>
+#include<stdlib. h>
+#include<ctype. h>
+
+char op[2],argl[5],arg2([5], result[5];
+int main()
+{
+FILE *fpl,*fp2;
+fpl=fopen("input.txt”,"r"); I
+fp2=Topen( "output.txt", "w");
+
+while(!feof (fpl))
+{
+fscanf(fpl, "%s%s%s%s", result,argl,op,arg2);
+if(strcmp(op, "+" )==0)
+{
+fprintf(fp2, "\nMOV RO,%s",argl);
+fprintf(fp2, "\nADD RO,%s",arg2);
+fprintf(fp2, "\nMOV %s,R0O", result);
+}
+
+if(strcmp(op, "-")==0)
+{
+fprintf(fp2, “\nMOV RO,;%s",argl);
+fprintf(fp2, "\nSUB RO,%s",arg2);
+fprintf(fp2, “\nMOV %s,R0O", result);
+}
+
+if(strcmp(op, "*")==0)
+{
+fprintf(fp2, “\nMOV RO,;%s",argl);
+fprintf(fp2, "\nMUL RO,%s",arg2);
+fprintf(fp2, “\nMOV %s,R0O", result);
+}
+
+if(strcmp(op, "/")==0)
+{
+fprintf(fp2, “\nMOV RO,;%s",argl);
+fprintf(fp2, "\nDIV RO,%s",arg2);
+fprintf(fp2, “\nMOV %s,R0O", result);
+}
+if(strcmp(op, "=")==0)
+{
+fprintf(fp2, “\nMOV RO,;%s",argl);
+fprintf(fp2, “\nMOV %s,R0O", result);
+}
+}
+fclose(fp1);
+fclose(fp2);
+}
