@@ -1,7 +1,8 @@
-#include<stdio.h> #include<stdlib.h>
-void FIFO(char [ ],char [ ],int,int);
-void lru(char [ ],char [ ],int,int);
-void opt(char [ ],char [ ],int,int);
+#include<stdio.h>
+#include<stdlib.h>
+void FIFO(char [],char [ ],int,int);
+void lru(char [],char [ ],int,int);
+void opt(char [],char [ ],int,int);
 int main()
 {
 int ch,YN=1,i,l,f;
