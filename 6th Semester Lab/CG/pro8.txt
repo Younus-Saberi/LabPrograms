@@ -134,3 +134,7 @@ glutAttachMenu(GLUT_LEFT_BUTTON);
 glutMainLoop();
 return 0;
 }
+//Parameters:
+//-lopengl32
+//-lfreeglut
+//-lglu32
