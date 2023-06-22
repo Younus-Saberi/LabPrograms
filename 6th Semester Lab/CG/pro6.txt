@@ -90,3 +90,7 @@ glEnable(GL_DEPTH_TEST); // do depth comparisons and update the depth buffer.
 glutMainLoop();
 return 0;
 }
+//Parameters:
+//-lopengl32
+//-lfreeglut
+//-lglu32
