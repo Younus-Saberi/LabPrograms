@@ -84,3 +84,7 @@ glClearColor(0.0,0.0,0.0,1.0);
 glutMainLoop();
 return 0;
 }
+//Parameters:
+//-lopengl32
+//-lfreeglut
+//-lglu32
