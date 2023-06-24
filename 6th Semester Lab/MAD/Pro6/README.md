@@ -1,3 +1,7 @@
+<h1>Very Important:
+  Add Assets folder by following the given hierarchy:
+App->new->folder->Assests folder</h1>
+
 1) Firstly Create an Application by Name “JsonParser”
 2) Go to xml code of design change the layout to “RelativeLayout”
 3) Add TextView component & change the following properties:
