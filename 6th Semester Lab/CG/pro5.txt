@@ -10,10 +10,10 @@ const int BOTTOM = 1;
 outcode ComputeOutCode(double x, double y);
 void CohenSutherlandLineClipAndDraw(double x0, double y0, double x1, double y1)
 {
-//Outcodes for P0, P1, and whatever point lies outside the clip rectangle
+
 outcode outcode0, outcode1, outcodeOut;
 bool accept = false, done = false;
-//compute outcodes
+
 outcode0 = ComputeOutCode(x0, y0);
 outcode1 = ComputeOutCode(x1, y1);
 do {
@@ -77,7 +77,7 @@ glVertex2f(xvmax, yvmin);
 glVertex2f(xvmax, yvmax);
 glVertex2f(xvmin, yvmax);
 glEnd();
-glColor3f(0.0, 0.0, 1.0); // draw blue colored clipped line
+glColor3f(0.0, 0.0, 1.0); 
 glBegin(GL_LINES);
 glVertex2d(vx0, vy0);
 glVertex2d(vx1, vy1);
@@ -87,13 +87,13 @@ glEnd();
 outcode ComputeOutCode(double x, double y)
 {
 outcode code = 0;
-if (y>ymax) //above the clip window
+if (y>ymax) 
 code |= TOP;
-else if (y<ymin) //below the clip window
+else if (y<ymin) 
 code |= BOTTOM;
-if (x>xmax) //to the right of clip window
+if (x>xmax) 
 code |= RIGHT;
-else if (x<xmin) //to the left of clip window
+else if (x<xmin)
 code |= LEFT;
 return code;
 }
