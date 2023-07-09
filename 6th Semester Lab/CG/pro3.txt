@@ -2,13 +2,13 @@
 #include<stdlib.h>
 #include<GL/glut.h>
 GLfloat vertices[8][3] = { { -1,-1,1 },{ -1,1,1 },{ 1,1,1 },
-{ 1,-1,1 },{ -1,-1,-1 },{ -1,1,-1 },{ 1,1,-1 },{ 1,-1,-1 } };//2D array to store the vertices values
+{ 1,-1,1 },{ -1,-1,-1 },{ -1,1,-1 },{ 1,1,-1 },{ 1,-1,-1 } };
 GLfloat colors[8][3] = { { 0,0,0 },{ 1,0,0 },{ 1,1,0 },
 { 0,1,0 },{ 0,0,1 },{ 1,0,1 },{ 1,1,1 },{ 0,1,1 } };
-//2D array to store the colour values
+
 void polygon(int a, int b, int c, int d)
 {
-glBegin(GL_POLYGON);//Draw a polygon with list of vertices
+glBegin(GL_POLYGON);
 glColor3fv(colors[a]);
 glVertex3fv(vertices[a]);
 glColor3fv(colors[b]);
@@ -29,21 +29,21 @@ polygon(2, 6, 5, 1);
 polygon(0, 4, 7, 3);
 }
 static GLfloat th[] = { 0,0,0 };
-static GLint axis = 1; //Default y axis Rotation
+static GLint axis = 1;
 void display(void)
 {
-glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);//Clear Frame Buffer and depth Buffer
+glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 glLoadIdentity();
-glRotatef(th[0], 1, 0, 0);//Rotate Angle on X axis, glRotatef(angle,x,y,z);
+glRotatef(th[0], 1, 0, 0);
 glRotatef(th[1], 0, 1, 0);
 glRotatef(th[2], 0, 0, 1);
 colorCube();
 glFlush();
-glutSwapBuffers();//Swapping of Front and Back buffer
+glutSwapBuffers();
 }
 void spinCube()
 {
-th[axis] = th[axis] + 0.1;//Controls the speed of rotation
+th[axis] = th[axis] + 0.1;
 if (th[axis]>360)
 th[axis] = th[axis] - 360;
 glutPostRedisplay();
@@ -62,7 +62,7 @@ void myReshape(int w, int h)
 glViewport(0, 0, w, h);
 glMatrixMode(GL_PROJECTION);
 glLoadIdentity();
-glOrtho(-2, 2, -2, 2, -10, 10);//Specify the distances to the nearer and far depth clipping planes.
+glOrtho(-2, 2, -2, 2, -10, 10);
 glMatrixMode(GL_MODELVIEW);
 }
 int main(int argc, char ** argv)
@@ -71,8 +71,8 @@ glutInit(&argc, argv);
 glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 glutCreateWindow("SPINCUBE");
 glutInitWindowSize(700, 700);
-glutReshapeFunc(myReshape);//The width and height parameters of the callback
-glutDisplayFunc(display); //specify the new window size in pixels.
+glutReshapeFunc(myReshape);
+glutDisplayFunc(display); 
 glutIdleFunc(spinCube);
 glutMouseFunc(mouse);
 glEnable(GL_DEPTH_TEST);
