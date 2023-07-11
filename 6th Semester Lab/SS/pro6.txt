@@ -108,7 +108,9 @@ void yyerror()
  printf("EEK, parse error! Message: ");
  exit(-1);
 }
-inputfile.txt
+
+inputfile.c
+
 #include<stdio.h>
 
 int main()
